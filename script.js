@@ -8,9 +8,6 @@ const bText = params.get("b") || "Opção B";
 const cText = params.get("c") || "Opção C";
 const dText = params.get("d") || "Opção D";
 
-const rightAnswer = (params.get("rightAnswer") || "").toLowerCase().trim(); // a|b|c|d
-const reveal = (params.get("reveal") || "0") === "1";
-
 function norm(s){
   return (s || "")
     .toLowerCase()
@@ -19,7 +16,7 @@ function norm(s){
     .trim();
 }
 
-// Render imediato (como o original)
+// Render imediato (aparece sempre no OBS)
 document.getElementById("title").textContent = title;
 document.getElementById("text_a").textContent = aText;
 document.getElementById("text_b").textContent = bText;
@@ -28,26 +25,12 @@ document.getElementById("text_d").textContent = dText;
 
 const statusEl = document.getElementById("status");
 
-// Revelar correta (controlado por URL)
-function applyReveal(){
-  ["a","b","c","d"].forEach(k => {
-    const el = document.getElementById(`opt_${k}`);
-    el.classList.remove("correct");
-  });
-
-  if (reveal && rightAnswer && ["a","b","c","d"].includes(rightAnswer)){
-    document.getElementById(`opt_${rightAnswer}`).classList.add("correct");
-  }
-}
-applyReveal();
-
-// Atualiza UI
 function updateUI(counts){
   const total = (counts.a + counts.b + counts.c + counts.d) || 1;
 
   const set = (k) => {
     document.getElementById(`count_${k}`).textContent = counts[k];
-    document.getElementById(`fill_${k}`).style.width = `${(counts[k]/total)*100}%`;
+    document.getElementById(`fill_${k}`).style.width = `${(counts[k] / total) * 100}%`;
   };
 
   set("a"); set("b"); set("c"); set("d");
@@ -56,7 +39,7 @@ function updateUI(counts){
   statusEl.textContent = `Votos: ${realTotal}`;
 }
 
-// Limpa chat no arranque (igual ao teu exemplo)
+// Limpa as palavras A,B,C,D ao arrancar
 fetch(`${domain}/clear-chat?words=a,b,c,d`)
   .then(() => setTimeout(fetchData, 500))
   .catch(() => { statusEl.textContent = "Sem ligação ao servidor"; });
@@ -80,7 +63,10 @@ async function fetchData(){
     }
 
     updateUI(counts);
-    statusEl.textContent = "A ler comentários…";
+    // Mantém uma indicação viva
+    if (statusEl.textContent.startsWith("Sem ligação")) {
+      statusEl.textContent = "A ler comentários…";
+    }
   } catch(e){
     statusEl.textContent = "Erro ao ler wordcloud…";
   }
