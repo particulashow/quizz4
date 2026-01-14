@@ -7,20 +7,72 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="frame" id="frame">
+  <div class="frame">
     <div class="header">
       <div class="title" id="title">Pergunta</div>
       <div class="meta">
         <span class="chip">Vota no chat: A B C D</span>
-        <span class="chip chip-muted" id="status">A ler comentários…</span>
+        <span class="chip chip-muted" id="status">A ligar…</span>
       </div>
     </div>
 
-    <div class="options" id="options"></div>
+    <div class="options">
+      <!-- A -->
+      <div class="option" data-k="a" id="opt_a">
+        <div class="correct-badge">✅ Correta</div>
+        <div class="option-top">
+          <div class="badge">
+            <div class="letter">A</div>
+            <div class="text" id="text_a">Opção A</div>
+          </div>
+          <div class="count" id="count_a">0</div>
+        </div>
+        <div class="bar"><div class="fill" id="fill_a"></div></div>
+      </div>
+
+      <!-- B -->
+      <div class="option" data-k="b" id="opt_b">
+        <div class="correct-badge">✅ Correta</div>
+        <div class="option-top">
+          <div class="badge">
+            <div class="letter">B</div>
+            <div class="text" id="text_b">Opção B</div>
+          </div>
+          <div class="count" id="count_b">0</div>
+        </div>
+        <div class="bar"><div class="fill" id="fill_b"></div></div>
+      </div>
+
+      <!-- C -->
+      <div class="option" data-k="c" id="opt_c">
+        <div class="correct-badge">✅ Correta</div>
+        <div class="option-top">
+          <div class="badge">
+            <div class="letter">C</div>
+            <div class="text" id="text_c">Opção C</div>
+          </div>
+          <div class="count" id="count_c">0</div>
+        </div>
+        <div class="bar"><div class="fill" id="fill_c"></div></div>
+      </div>
+
+      <!-- D -->
+      <div class="option" data-k="d" id="opt_d">
+        <div class="correct-badge">✅ Correta</div>
+        <div class="option-top">
+          <div class="badge">
+            <div class="letter">D</div>
+            <div class="text" id="text_d">Opção D</div>
+          </div>
+          <div class="count" id="count_d">0</div>
+        </div>
+        <div class="bar"><div class="fill" id="fill_d"></div></div>
+      </div>
+    </div>
 
     <div class="footer">
-      <div class="note" id="note">
-        Dica: para revelar a resposta certa, muda o URL para <b>reveal=1</b>.
+      <div class="note">
+        Para revelar a resposta certa: <b>&reveal=1</b> | Para esconder: <b>&reveal=0</b>
       </div>
     </div>
   </div>
