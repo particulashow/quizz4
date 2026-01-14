@@ -63,7 +63,6 @@ async function fetchData(){
     }
 
     updateUI(counts);
-    // Mantém uma indicação viva
     if (statusEl.textContent.startsWith("Sem ligação")) {
       statusEl.textContent = "A ler comentários…";
     }
