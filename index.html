@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoom Poll (Custom)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="frame" id="frame">
+    <div class="header">
+      <div class="title" id="title">Pergunta</div>
+      <div class="meta">
+        <span class="chip">Vota no chat: A B C D</span>
+        <span class="chip chip-muted" id="status">A ler comentários…</span>
+      </div>
+    </div>
+
+    <div class="options" id="options"></div>
+
+    <div class="footer">
+      <div class="note" id="note">
+        Dica: para revelar a resposta certa, muda o URL para <b>reveal=1</b>.
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
